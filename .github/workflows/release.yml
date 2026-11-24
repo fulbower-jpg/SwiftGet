@@ -1,0 +1,24 @@
+# Publishing a release: create a tag that starts with "v" (for example v1.0.0).
+# This builds SwiftGet.exe and attaches it to a public "Release" page that anyone can download from.
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build SwiftGet.exe
+        run: dotnet build SwiftGet.csproj -c Release -o dist --nologo
+      - name: Engine smoke tests
+        run: dotnet run --project tests/EngineSmoke/EngineSmoke.csproj -c Release
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/SwiftGet.exe
+          generate_release_notes: true

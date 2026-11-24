@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "SwiftGet Integration",
+  "version": "1.0.0",
+  "description": "Send downloads from your browser to SwiftGet, the free multi-connection download manager.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuoh9iI0tTckBEb1IsATPr3yXjf71obhLcK2XdzRfoEtJweDk5Tv6MMtYvkoJ6wzrPiuymx/RobYG/5srY4y+Z8hmlPoWhDqOjmXDO5qcyUmkNPCk54xzuqd96xAf6lMcxY8Dh2HqDKClLmenyCyZC5hTtgVcMs4trzuSYCetA9DPCZadfhqN8tYZGnBHC/Pv58SuzcwnqUxE5oaDEbAjzC0ktCDnbDzPqUKCmBt2dGilQmBwxQfD8fvnq8wM55RAbCbTLKpG1s9CczjUWyFgWryUmtzM2IP0R3OMN/JBaHvuvgkDUL11qxofPhZTcGlgwaWmk1Eq91Cyr1g8TrfwyQIDAQAB",
+  "permissions": [
+    "downloads",
+    "nativeMessaging",
+    "contextMenus",
+    "cookies",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SwiftGet",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}

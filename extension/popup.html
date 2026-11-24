@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font: 13px "Segoe UI", Arial, sans-serif; width: 270px; margin: 0; padding: 14px; color: #202124; }
+  h1 { font-size: 15px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+  h1 img { width: 20px; height: 20px; }
+  .row { display: flex; align-items: center; justify-content: space-between; margin: 10px 0; }
+  .status { padding: 8px 10px; border-radius: 6px; background: #f1f3f4; margin-bottom: 6px; }
+  .ok { background: #e6f4ea; color: #137333; }
+  .bad { background: #fce8e6; color: #a50e0e; }
+  button { font: inherit; padding: 6px 10px; border: 1px solid #dadce0; border-radius: 6px; background: #fff; cursor: pointer; }
+  button:hover { background: #f1f3f4; }
+  .btns { display: flex; gap: 8px; margin-top: 12px; }
+  .switch { position: relative; width: 38px; height: 20px; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider { position: absolute; inset: 0; background: #bdc1c6; border-radius: 20px; transition: .15s; }
+  .slider:before { content: ""; position: absolute; height: 14px; width: 14px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .15s; }
+  input:checked + .slider { background: #1a73e8; }
+  input:checked + .slider:before { transform: translateX(18px); }
+  small { color: #5f6368; }
+</style>
+</head>
+<body>
+  <h1><img src="icons/32.png" alt="">SwiftGet</h1>
+  <div id="status" class="status">Checking...</div>
+  <div class="row">
+    <span>Take over browser downloads</span>
+    <label class="switch"><input type="checkbox" id="enabled"><span class="slider"></span></label>
+  </div>
+  <small>Right-click any link and choose "Download with SwiftGet" to send it manually.</small>
+  <div class="btns">
+    <button id="open">Open SwiftGet</button>
+    <button id="opts">Settings</button>
+  </div>
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

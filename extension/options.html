@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SwiftGet settings</title>
+<style>
+  body { font: 14px "Segoe UI", Arial, sans-serif; max-width: 640px; margin: 24px auto; padding: 0 16px; color: #202124; }
+  h1 { font-size: 20px; }
+  label.block { display: block; margin: 16px 0 4px; font-weight: 600; }
+  textarea, input[type=number] { width: 100%; box-sizing: border-box; font: inherit; padding: 6px; border: 1px solid #dadce0; border-radius: 6px; }
+  textarea { height: 110px; }
+  .hint { color: #5f6368; font-size: 12px; margin-top: 2px; }
+  button { font: inherit; padding: 7px 14px; border: 0; border-radius: 6px; background: #1a73e8; color: #fff; cursor: pointer; margin-top: 18px; }
+  button.link { background: none; color: #1a73e8; padding: 0; margin: 0 0 0 12px; }
+  #saved { margin-left: 10px; color: #137333; }
+</style>
+</head>
+<body>
+  <h1>SwiftGet settings</h1>
+
+  <label><input type="checkbox" id="enabled"> Take over browser downloads</label>
+  <br><br>
+  <label><input type="checkbox" id="interceptAll"> Also take over file types that are not in the list below</label>
+
+  <label class="block" for="extensions">File types SwiftGet takes over (separated by spaces or commas)</label>
+  <textarea id="extensions"></textarea>
+  <button class="link" id="reset" type="button">Reset list</button>
+
+  <label class="block" for="minSizeMB">Ignore downloads smaller than (MB, 0 = take everything)</label>
+  <input type="number" id="minSizeMB" min="0" step="1">
+
+  <label class="block" for="excludedSites">Sites that always use the browser's downloader (one per line)</label>
+  <textarea id="excludedSites" placeholder="example.com"></textarea>
+  <div class="hint">Example: a bank or school site that needs the browser's own downloader.</div>
+
+  <button id="save" type="button">Save</button><span id="saved"></span>
+
+  <script src="common.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

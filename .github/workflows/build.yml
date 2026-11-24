@@ -1,0 +1,24 @@
+# Builds the app, runs the engine tests, and keeps SwiftGet.exe as a downloadable file
+# (open the run in the "Actions" tab, then look under "Artifacts").
+name: Build and test
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build SwiftGet.exe
+        run: dotnet build SwiftGet.csproj -c Release -o dist --nologo
+      - name: Engine smoke tests
+        run: dotnet run --project tests/EngineSmoke/EngineSmoke.csproj -c Release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SwiftGet
+          path: dist/SwiftGet.exe
